@@ -1,16 +1,6 @@
 <?php
 include 'koneksi.php';
-/*
- * Heri Priady
- * Sample Crud MYSQLi
- * 10/07/2017 23:03
- * priadyheri@gmail.com
- * 082386376942
- * https://www.facebook.com/ciwerartikel
- * Alamat :Desa Kumain, Kec.Tandun, Kab.Rokan Hulu
- * and open the template in the editor.
- */ 
-//Start Aksi Anggota
+
 $g=$_GET['sender'];
 if($g=='anggota')
 {

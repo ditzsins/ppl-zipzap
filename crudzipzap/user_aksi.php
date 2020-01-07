@@ -17,7 +17,7 @@ if($g=='user')
             alert("User baru dengan Nama Lengkap :('.$_POST[nama_lengkap].') Tersimpan")
             window.location.href="index.php?page=user";
             </script>'; 
-    }
+        }
     else{
         echo "Error : ".$sql.". ".mysqli_error($config);
     }
@@ -46,7 +46,7 @@ else
     {
          mysqli_query($config,"DELETE FROM user where email='$_GET[id]'");
          echo '<script LANGUAGE="JavaScript">
-            alert("User dengan Email :('.$_GET[email].') Di Terhapus")
+            alert("User dengan Email :('.$_GET[user.nama_lengkap].') Di Terhapus")
             window.location.href="index.php?page=user";
             </script>';
     }

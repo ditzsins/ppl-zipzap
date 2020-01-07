@@ -1,5 +1,7 @@
 <?php
 include 'koneksi.php';
+
+$g=$_GET['sender'];
 if($g=='order')
 {
     $sql="INSERT INTO pesanan (nama_lengkap, tgl_pesanan, jenis_sepatu, jenis_treatment, harga, nama_metode)
@@ -9,7 +11,8 @@ if($g=='order')
          $jenis_sepatu      ='$_POST[jenis_sepatu]',
          $jenis_treatment   ='$_POST[jenis_treatment]', 
          $harga             ='$_POST[harga]',
-         $nama_metode       ='$_POST[nama_metode]')"; 
+         $nama_metode       ='$_POST[nama_metode]',
+         $status            ='$_POST[status]')"; 
         if (mysqli_query($config, $sql)){ 
         echo '<script LANGUAGE="JavaScript">
             alert("Order baru dengan nama :('.$_POST[nama_lengkap].') Tersimpan")
