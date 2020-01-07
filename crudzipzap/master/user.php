@@ -5,17 +5,7 @@
       <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
-          <!-- Sidebar user panel -->
-          <aside id="leftsidebar" class="sidebar">
-          <div class="user-info">
-                <div class="image px-0" align="center">
-                    <img src="image/foto.png" width="200" height="250" alt="User" align="center"/>
-                </div>
-                <div class="info-container" color="white">
-                    <div class="name" nama="nama_lengkap" data-toggle="dropdown" color="white" aria-haspopup="true" aria-expanded="false">Olil</div>
-                </div>
-            </div>
-         
+          <!-- Sidebar user panel --> 
           <!-- sidebar menu: : style can be found in sidebar.less -->
            <ul class="sidebar-menu">
             <li class="header" align="center">ADMIN</li>
@@ -32,8 +22,14 @@
             </li>
 
             <li class="active">
-              <a href="<?php $_SERVER[SCRIPT_NAME];?>?page=checkout">
-                <i class="fa fa-calendar-check-o"></i> <span>Check Out</span>  
+              <a href="<?php $_SERVER[SCRIPT_NAME];?>?page=treatment">
+                <i class="fa fa-check-square"></i> <span>Jenis Treatment</span>  
+              </a>
+            </li>
+
+            <li class="active">
+              <a href="<?php $_SERVER[SCRIPT_NAME];?>?page=sepatu">
+                <i class="fa fa-check-square-o"></i> <span>Jenis Sepatu</span>  
               </a>
             </li>  
             
@@ -44,7 +40,7 @@
             </li>            
           </ul>
         </section>
-     
+      
         <!-- /.sidebar -->
       </aside>
       
@@ -55,7 +51,7 @@
           <h1>User</h1>
           <ol class="breadcrumb">
             <li><a href="index.php"><i class="fa fa-dashboard"></i> Beranda</a></li>
-            <li><a href="#">User</a></li>
+            <li><a href="user.php">User</a></li>
             <li class="active">List User</li>
             
           </ol>
@@ -89,6 +85,7 @@
                         <div class="row">
                   <div class="col-md-12 form-group">
                     <label>Nama Lengkap</label>
+                    <input type="hidden" name="email" value="<?php echo $row['email'];?>" class="form-control">
                     <input type="text" name="nama_lengkap" value="<?php echo $row['nama_lengkap'];?>" class="form-control" placeholder="Nama Lengkap" required="">
                   </div>
 
@@ -109,7 +106,8 @@
 
                   <div class="col-md-12 form-group">
                     <label>Jenis Kelamin</label>
-                    <input type="text" name="jenis_kelamin" value="<?php echo $row['jenis_kelamin'];?>" class="form-control" placeholder="Jenis Kelamin" required="">
+                      <input type="radio" name="jenis_kelamin" value="Laki-laki">Laki Laki
+                      <input type="radio" name="jenis_kelamin" value="Perempuan">Perempuan
                   </div>
 
                   <div class="col-md-12 form-group">
