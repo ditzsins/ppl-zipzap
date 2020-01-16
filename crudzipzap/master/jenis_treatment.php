@@ -3,18 +3,7 @@
       <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
-          <!-- Sidebar user panel -->
-          <aside id="leftsidebar" class="sidebar">
-          <div class="user-info">
-                <div class="image px-0" align="center">
-                    <img src="" width="200" height="250" alt="User" align="center"/>
-                </div>
-                <div class="info-container" color="white">
-                    <div class="name" nama="nama_lengkap" data-toggle="dropdown" color="white" aria-haspopup="true" aria-expanded="false">Olil</div>
-                </div>
-            </div>
-         
-          <!-- sidebar menu: : style can be found in sidebar.less -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
            <ul class="sidebar-menu">
             <li class="header" align="center">ADMIN</li>
             <li class="active">
@@ -112,6 +101,7 @@
 
                   <div class="col-md-12 form-group">
                     <label>Harga Satuan</label>
+                    <input type="hidden" name="id_metode_cuci" value="<?php echo $row['id_metode_cuci'];?>" class="form-control">
                     <input type="text" name="harga" value="<?php echo $row['harga'];?>" class="form-control" placeholder="Harga Satuan" required="">
                   </div>
 
@@ -123,6 +113,20 @@
                   <div class="col-md-12 form-group">
                     <label>Foto</label>
                     <input type="file" name="foto_treatment" value="<?php echo $row['foto_treatment'];?>" class="form-control" placeholder="Foto" required="">
+                  </div>
+
+                  <div class="col-md-12 form-group">
+                    <label>Status Treatment</label>
+                    <select name="id_metode_cuci" class="form-control" required="">
+                    <?php 
+                      $sql = mysqli_query($config, "SELECT * FROM metode_cuci");
+                      while ($row = $sql->fetch_assoc()){
+                    ?>
+                      <option value="<?php echo $row['id_metode_cuci'];?>"><?php echo $row['status_treatment']; ?></option>
+                    <?php }?>
+                      
+                    </select>
+                    
                   </div>
 
                   <div class="col-md-12 form-group"> 
@@ -153,7 +157,8 @@
                         <th>Jenis Sepatu</th>
                         <th>Harga Satuan</th>
                         <th>Deskripsi</th> 
-                        <th>Foto</th>         
+                        <th>Foto</th>  
+                        <th>Status</th>         
                         <th>Aksi</th>
                          
                       </tr>
@@ -175,9 +180,9 @@
                             <td><?php echo $row['harga'];?></td>
                             <td><?php echo $row['deskripsi'];?></td>
                             <td><?php 
-                            echo '<img src="data:image/jpeg;base64,'.base64_encode( $row['foto_treatment'] ).'" alt="Avatar" style="width:90%" align="center"/>';
+                            echo '<img src="data:image/jpeg;base64,'.base64_encode( $row['foto'] ).'" alt="Avatar" style="width:90%" align="center"/>';
                         ?></td>
-                
+                            <td><?php echo $row['status_treatment'];?></td>
                             <td>
                                 <a href="<?php $_SERVER[SCRIPT_NAME] ;?>?page=treatment&id_metode_cuci=<?php echo $row['id_metode_cuci'];?>" class="btn btn-info"><li class="fa fa-pencil"></li> Edit</a> 
                                 <a href="treatment_aksi.php?sender=hapus&id=<?php echo $row['id_metode_cuci']; ?>" class="btn btn-danger"><li class="fa fa-trash-o"></li> Hapus</a> 

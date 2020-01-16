@@ -5,18 +5,7 @@
        <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
-          <!-- Sidebar user panel -->
-          <aside id="leftsidebar" class="sidebar">
-          <div class="user-info">
-                <div class="image px-0" align="center">
-                    <img src="" width="200" height="250" alt="User" align="center"/>
-                </div>
-                <div class="info-container" color="white">
-                    <div class="name" nama="nama_lengkap" data-toggle="dropdown" color="white" aria-haspopup="true" aria-expanded="false">Olil</div>
-                </div>
-            </div>
-         
-          <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
            <ul class="sidebar-menu">
             <li class="header" align="center">ADMIN</li>
             <li class="active">
@@ -162,14 +151,13 @@
                     <tbody>
                     <?php
                         $sql="SELECT  * 
-                              FROM testimoni, user, pesanan, metode_pembayaran, metode_pengiriman, konfirmasi, detail_pesanan, metode_cuci, sepatu
-                              where user.email=pesanan.email
+                              FROM user, pesanan, metode_pembayaran, metode_pengiriman,detail_pesanan, metode_cuci, sepatu
+                              WHERE user.email = pesanan.email
                               and pesanan.id_metode_pembayaran = metode_pembayaran.id_metode_pembayaran
-                              and metode_pembayaran.id_metode_pengiriman = metode_pengiriman.id_metode_pengiriman
-                              and pesanan.id_pesanan = konfirmasi.id_pesanan
                               and pesanan.id_pesanan = detail_pesanan.id_pesanan
                               and detail_pesanan.id_metode_cuci = metode_cuci.id_metode_cuci
                               and metode_cuci.id_sepatu = sepatu.id_sepatu
+                              group by pesanan.id_pesanan
                               ";
                         $no=1;
                         if (!$result=  mysqli_query($config, $sql)){

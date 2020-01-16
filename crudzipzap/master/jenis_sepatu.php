@@ -2,18 +2,7 @@
       <!-- Left side column. contains the logo and sidebar -->
       <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
-          <!-- Sidebar user panel -->
-          <aside id="leftsidebar" class="sidebar">
-          <div class="user-info">
-                <div class="image px-0" align="center">
-                    <img src="" width="200" height="250" alt="User" align="center"/>
-                </div>
-                <div class="info-container" color="white">
-                    <div class="name" nama="nama_lengkap" data-toggle="dropdown" color="white" aria-haspopup="true" aria-expanded="false">Olil</div>
-                </div>
-            </div>
-         
+        <section class="sidebar">        
           <!-- sidebar menu: : style can be found in sidebar.less -->
            <ul class="sidebar-menu">
             <li class="header" align="center">ADMIN</li>

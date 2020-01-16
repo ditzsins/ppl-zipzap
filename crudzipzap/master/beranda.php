@@ -58,11 +58,12 @@
                 <thead>
                   <tr> 
                     <th>No</th>
+                    <th>ID Pesanan</th>
                     <th>Nama Pemesan</th>
                     <th>Tanggal Pesan</th>
                     <th>Jenis Sepatu</th>
                     <th>Jenis Treatment</th>
-                    <th>Harga Satuan</th>
+                    <th>Total Harga</th>
                     <th>Metode Pembayaran</th>
                     <th>Status</th>                     
                   </tr>
@@ -70,14 +71,14 @@
                 <tbody>
                 <?php
                         $sql="SELECT  * 
-                              FROM user, pesanan, metode_pembayaran, metode_pengiriman, konfirmasi, detail_pesanan, metode_cuci, sepatu
+                              FROM user, pesanan, detail_pesanan, metode_pembayaran, metode_pengiriman, metode_cuci, sepatu
                               WHERE user.email = pesanan.email
+                              and pesanan.id_metode_pengiriman = metode_pengiriman.id_metode_pengiriman
                               and pesanan.id_metode_pembayaran = metode_pembayaran.id_metode_pembayaran
-                              and metode_pembayaran.id_metode_pengiriman = metode_pengiriman.id_metode_pengiriman
-                              and pesanan.id_pesanan = konfirmasi.id_pesanan
                               and pesanan.id_pesanan = detail_pesanan.id_pesanan
                               and detail_pesanan.id_metode_cuci = metode_cuci.id_metode_cuci
                               and metode_cuci.id_sepatu = sepatu.id_sepatu
+                              group by pesanan.id_pesanan
                               ";
                         $no=1;
                         if (!$result=  mysqli_query($config, $sql)){
@@ -89,11 +90,12 @@
                 
                      <tr>
                         <td><?php echo $no ;?></td>
+                        <td><?php echo $row['id_pesanan'];?></td>
                         <td><?php echo $row['nama_lengkap'];?></td>
                         <td><?php echo $row['tgl_pesanan'];?></td>
                         <td><?php echo $row['jenis_sepatu'];?></td>
                         <td><?php echo $row['jenis_treatment'];?></td>
-                        <td><?php echo $row['harga'];?></td>
+                        <td><?php echo $row['total_harga'];?></td>
                         <td><?php echo $row['nama_metode'];?></td>
                         <td><?php echo $row['status'];?></td>
                     </tr>    
